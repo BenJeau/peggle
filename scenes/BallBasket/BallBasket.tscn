@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/BallBasket/BallBasket.gd" type="Script" id=1]
+[ext_resource path="res://scenes/BallBasket/Ball/Ball.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/ball_basket_shooter.png-ba647b3deb190bcd1b12ee7c9355a138.stex"
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = SubResource( 4 )
+region = Rect2( 0, 0, 8, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="StreamTexture" id=7]
+load_path = "res://.import/ball_basket.png-8b31d9f3c2592a4dc80a105a6dd45df1.stex"
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = SubResource( 7 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="BallShooter" type="Node2D"]
+script = ExtResource( 1 )
+Ball = ExtResource( 2 )
+
+[node name="Shooter" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 37 )
+z_index = 1
+frames = SubResource( 6 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpzb3VyY2V8PS9Vc2Vycy9iZW4vc3ByaXRlcy9zaG9vdGVyLW5vc3NsZS5hc2Vwcml0ZQpsYXllcnw9c2hvb3RlcgpvcF9leHB8PVRydWUKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PUZhbHNlCm9fZXhfcHw9Cg=="
+}
+
+[node name="Bucket" type="AnimatedSprite" parent="."]
+z_index = 1
+frames = SubResource( 9 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpzb3VyY2V8PS9Vc2Vycy9iZW4vc3ByaXRlcy9zaG9vdGVyLmFzZXByaXRlCmxheWVyfD1MYXllciAxCm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PWJhbGxfYmFza2V0Cm9ubHlfdmlzaWJsZXw9RmFsc2UKb19leF9wfD0K"
+}

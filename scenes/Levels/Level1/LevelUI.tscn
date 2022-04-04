@@ -1,0 +1,123 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Levels/Level1/LevelUI.gd" type="Script" id=1]
+
+[node name="LevelUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="GameOverOverlay" type="ColorRect" parent="."]
+visible = false
+margin_right = 1025.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.627451 )
+
+[node name="Node2D" type="VBoxContainer" parent="GameOverOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -300.0
+margin_right = 204.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="GameOverOverlay/Node2D"]
+margin_top = 249.0
+margin_right = 408.0
+margin_bottom = 263.0
+text = "GAME OVER"
+align = 1
+
+[node name="TryAgainButton" type="Button" parent="GameOverOverlay/Node2D"]
+margin_top = 267.0
+margin_right = 408.0
+margin_bottom = 327.0
+rect_min_size = Vector2( 0, 60 )
+text = "Try Again"
+
+[node name="QuitButton" type="Button" parent="GameOverOverlay/Node2D"]
+margin_top = 331.0
+margin_right = 408.0
+margin_bottom = 351.0
+text = "Quit"
+
+[node name="WinOverlay" type="ColorRect" parent="."]
+visible = false
+margin_right = 1025.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.627451 )
+
+[node name="Node2D" type="VBoxContainer" parent="WinOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -300.0
+margin_right = 204.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="WinOverlay/Node2D"]
+margin_top = 249.0
+margin_right = 408.0
+margin_bottom = 263.0
+text = "YOU WIN"
+align = 1
+
+[node name="NextLevelButton" type="Button" parent="WinOverlay/Node2D"]
+margin_top = 267.0
+margin_right = 408.0
+margin_bottom = 327.0
+rect_min_size = Vector2( 0, 60 )
+text = "Next Level"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="WinOverlay/Node2D"]
+margin_top = 331.0
+margin_right = 408.0
+margin_bottom = 351.0
+alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="WinOverlay/Node2D/VBoxContainer"]
+margin_right = 364.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Try Again"
+
+[node name="QuitButton" type="Button" parent="WinOverlay/Node2D/VBoxContainer"]
+margin_left = 368.0
+margin_right = 408.0
+margin_bottom = 20.0
+text = "Quit"
+
+[node name="InfoContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+
+[node name="ScoreLabel" type="Label" parent="InfoContainer"]
+margin_bottom = 14.0
+
+[node name="BallsLeftLabel" type="Label" parent="InfoContainer"]
+margin_top = 18.0
+margin_bottom = 32.0
+
+[node name="PegsHitLabel" type="Label" parent="InfoContainer"]
+margin_top = 36.0
+margin_bottom = 50.0
+
+[node name="TimeElapsedLabel" type="Label" parent="InfoContainer"]
+margin_top = 54.0
+margin_bottom = 68.0
+
+[connection signal="pressed" from="GameOverOverlay/Node2D/TryAgainButton" to="." method="try_again"]
+[connection signal="pressed" from="GameOverOverlay/Node2D/QuitButton" to="." method="quit"]
+[connection signal="pressed" from="WinOverlay/Node2D/NextLevelButton" to="." method="next_level"]
+[connection signal="pressed" from="WinOverlay/Node2D/VBoxContainer/TryAgainButton" to="." method="try_again"]
+[connection signal="pressed" from="WinOverlay/Node2D/VBoxContainer/QuitButton" to="." method="quit"]
