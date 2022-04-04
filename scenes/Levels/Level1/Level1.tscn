@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Peg/Peg.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BallBasket/BallBasket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Levels/Level1/Level1.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Levels/Level1/LevelUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Wall/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BallBucket/BallBucket.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1087, 565, 0, 0, 0, 0, -49, 565 )
+}
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
@@ -89,11 +95,24 @@ z_index = 2
 
 [node name="LeftWall" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -2 )
+color = Color( 0.372549, 0.803922, 0.894118, 1 )
 
 [node name="Ceiling" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1030, -1 )
+position = Vector2( 1029, -1 )
 rotation = 1.5708
 scale = Vector2( 1, 2 )
+color = Color( 0.372549, 0.803922, 0.894118, 1 )
 
 [node name="RightWall" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1022, -2 )
+color = Color( 0.372549, 0.803922, 0.894118, 1 )
+
+[node name="BallBucket" parent="." instance=ExtResource( 6 )]
+position = Vector2( 498, 573 )
+
+[node name="BallBucketPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="BallBucketPosition" type="PathFollow2D" parent="BallBucketPath"]
+position = Vector2( 1087, 565 )
+rotation = -3.14156

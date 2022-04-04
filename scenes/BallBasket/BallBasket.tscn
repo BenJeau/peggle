@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/BallBasket/BallBasket.gd" type="Script" id=1]
 [ext_resource path="res://scenes/BallBasket/Ball/Ball.tscn" type="PackedScene" id=2]
@@ -33,7 +33,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="BallShooter" type="Node2D"]
+[sub_resource type="CircleShape2D" id=10]
+radius = 32.0156
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 4, 8 )
+
+[node name="BallShooter" type="StaticBody2D"]
 script = ExtResource( 1 )
 Ball = ExtResource( 2 )
 
@@ -51,3 +57,10 @@ frames = SubResource( 9 )
 __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpzb3VyY2V8PS9Vc2Vycy9iZW4vc3ByaXRlcy9zaG9vdGVyLmFzZXByaXRlCmxheWVyfD1MYXllciAxCm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PWJhbGxfYmFza2V0Cm9ubHlfdmlzaWJsZXw9RmFsc2UKb19leF9wfD0K"
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 37 )
+shape = SubResource( 11 )

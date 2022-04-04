@@ -61,37 +61,125 @@ margin_right = 204.0
 margin_bottom = 300.0
 alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="WinOverlay/Node2D"]
-margin_top = 249.0
+[node name="WinLabel" type="Label" parent="WinOverlay/Node2D"]
+margin_top = 231.0
 margin_right = 408.0
-margin_bottom = 263.0
+margin_bottom = 256.0
 text = "YOU WIN"
 align = 1
 
 [node name="NextLevelButton" type="Button" parent="WinOverlay/Node2D"]
-margin_top = 267.0
+margin_top = 264.0
 margin_right = 408.0
-margin_bottom = 327.0
+margin_bottom = 324.0
 rect_min_size = Vector2( 0, 60 )
 text = "Next Level"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="WinOverlay/Node2D"]
-margin_top = 331.0
+margin_top = 332.0
 margin_right = 408.0
-margin_bottom = 351.0
+margin_bottom = 369.0
 alignment = 1
 
 [node name="TryAgainButton" type="Button" parent="WinOverlay/Node2D/VBoxContainer"]
-margin_right = 364.0
-margin_bottom = 20.0
+margin_right = 330.0
+margin_bottom = 37.0
 size_flags_horizontal = 3
 text = "Try Again"
 
 [node name="QuitButton" type="Button" parent="WinOverlay/Node2D/VBoxContainer"]
-margin_left = 368.0
+margin_left = 338.0
 margin_right = 408.0
-margin_bottom = 20.0
+margin_bottom = 37.0
 text = "Quit"
+
+[node name="MenuPauseOverlay" type="ColorRect" parent="."]
+visible = false
+margin_right = 1025.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.627451 )
+
+[node name="Node2D" type="VBoxContainer" parent="MenuPauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -300.0
+margin_right = 204.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MenuPauseOverlay/Node2D"]
+margin_top = 208.0
+margin_right = 408.0
+margin_bottom = 233.0
+text = "Paused"
+align = 1
+
+[node name="ResumeButton" type="Button" parent="MenuPauseOverlay/Node2D"]
+margin_top = 241.0
+margin_right = 408.0
+margin_bottom = 301.0
+rect_min_size = Vector2( 0, 60 )
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="MenuPauseOverlay/Node2D"]
+margin_top = 309.0
+margin_right = 408.0
+margin_bottom = 346.0
+size_flags_horizontal = 3
+text = "Restart"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MenuPauseOverlay/Node2D"]
+margin_top = 354.0
+margin_right = 408.0
+margin_bottom = 391.0
+alignment = 1
+
+[node name="LevelListButton" type="Button" parent="MenuPauseOverlay/Node2D/VBoxContainer"]
+margin_right = 330.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+text = "Levels Screen"
+
+[node name="QuitButton" type="Button" parent="MenuPauseOverlay/Node2D/VBoxContainer"]
+margin_left = 338.0
+margin_right = 408.0
+margin_bottom = 37.0
+text = "Quit"
+
+[node name="FreeBallOverlay" type="ColorRect" parent="."]
+visible = false
+margin_right = 1025.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.627451 )
+
+[node name="Node2D" type="VBoxContainer" parent="FreeBallOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -300.0
+margin_right = 204.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="FreeBallOverlay/Node2D"]
+margin_top = 233.0
+margin_right = 408.0
+margin_bottom = 258.0
+text = "Free Ball Coin Toss"
+align = 1
+
+[node name="CountdownLabel" type="Label" parent="FreeBallOverlay/Node2D"]
+margin_top = 266.0
+margin_right = 408.0
+margin_bottom = 366.0
+rect_min_size = Vector2( 0, 100 )
+align = 1
+valign = 2
 
 [node name="InfoContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
@@ -102,22 +190,25 @@ margin_right = -30.0
 margin_bottom = -30.0
 
 [node name="ScoreLabel" type="Label" parent="InfoContainer"]
-margin_bottom = 14.0
+margin_bottom = 25.0
 
 [node name="BallsLeftLabel" type="Label" parent="InfoContainer"]
-margin_top = 18.0
-margin_bottom = 32.0
+margin_top = 33.0
+margin_bottom = 58.0
 
 [node name="PegsHitLabel" type="Label" parent="InfoContainer"]
-margin_top = 36.0
-margin_bottom = 50.0
+margin_top = 66.0
+margin_bottom = 91.0
 
 [node name="TimeElapsedLabel" type="Label" parent="InfoContainer"]
-margin_top = 54.0
-margin_bottom = 68.0
+margin_top = 99.0
+margin_bottom = 124.0
 
 [connection signal="pressed" from="GameOverOverlay/Node2D/TryAgainButton" to="." method="try_again"]
 [connection signal="pressed" from="GameOverOverlay/Node2D/QuitButton" to="." method="quit"]
 [connection signal="pressed" from="WinOverlay/Node2D/NextLevelButton" to="." method="next_level"]
 [connection signal="pressed" from="WinOverlay/Node2D/VBoxContainer/TryAgainButton" to="." method="try_again"]
 [connection signal="pressed" from="WinOverlay/Node2D/VBoxContainer/QuitButton" to="." method="quit"]
+[connection signal="pressed" from="MenuPauseOverlay/Node2D/ResumeButton" to="." method="toggle_menu_pause"]
+[connection signal="pressed" from="MenuPauseOverlay/Node2D/RestartButton" to="." method="try_again"]
+[connection signal="pressed" from="MenuPauseOverlay/Node2D/VBoxContainer/QuitButton" to="." method="quit"]
