@@ -17,10 +17,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
-
-    env:
-      NODE_VERSION: 18.15.0
+    runs-on: ubuntu-latest
 
     container:
       image: barichello/godot-ci:3.4.4
@@ -38,6 +35,10 @@ jobs:
 
       - name: Build
         run: godot -v --export "HTML5" build/web/index.html
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
